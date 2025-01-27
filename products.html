@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>SV-Shop</title>
+</head>
+<body>
+
+<header>
+  <h1>SV-Shop</h1>
+  <div>
+    <input type="text" id="search" placeholder="Search products..." style="padding: 5px; border-radius: 4px; border: 1px solid #ddd;">
+    <button onclick="searchProducts()" style="padding: 5px 10px;">Search</button>
+  </div>
+  <div>
+    <select id="userType" style="padding: 5px; border-radius: 4px; border: 1px solid #ddd;">
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+    <button id="signinButton" onclick="signIn()" style="padding: 5px 10px;">Sign In</button>
+    <button id="signoutButton" onclick="signOut()" style="padding: 5px 10px; display: none;">Sign Out</button>
+  </div>
+</header>
+
+<div class="container">
+  <div style="display: flex; gap: 20px;">
+    <aside class="categories" style="flex: 1;">
+      <h2>Categories</h2>
+      <ul>
+        <li><button onclick="filterCategory('Electronics')">Electronics</button></li>
+        <li><button onclick="filterCategory('Fashion')">Fashion</button></li>
+        <li><button onclick="filterCategory('Home & Garden')">Home & Garden</button></li>
+        <li><button onclick="filterCategory('Toys')">Toys</button></li>
+        <li><button onclick="filterCategory('Beauty')">Beauty</button></li>
+      </ul>
+    </aside>
+
+    <section class="products" style="flex: 3;" id="products">
+      <!-- Products will be dynamically generated here -->
+    </section>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 E-Shop. All rights reserved.
+</footer>
+
+
+<script src="./js/products.js"></script>
+<!-- <script src="./js/category.js"></script>
+<script src="./js/products.js"></script>
+<script src="./js/signIn.js"></script>
+<script src="./js/signOut.js"></script>
+<script src="./js/cart.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+</body>
+</html>
