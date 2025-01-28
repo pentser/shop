@@ -40,22 +40,15 @@
   
               <button type="submit">Submit</button>
           </form>
+          <span></span>
       </div>
     </div>
       <footer>
         &copy; 2025 E-Shop. All rights reserved.
       </footer>
+      <script src="./js/register.js"></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
 
-    <script>
-        document.getElementById('register-form').addEventListener('submit', function(event) {
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
 
-            if (password !== confirmPassword) {
-                event.preventDefault();
-                alert("worng content!!!");
-            }
-        });
-    </script>
 </body>
 </html>
