@@ -3,39 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/register.css">
   <title>Login Form</title>
  
 </head>
+
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter your details</title>
+    
+</head>
 <body>
-  <header>
-    <h1>On-Line-Store</h1>
-  </header>
+ 
+    <header>
+      <h1>On-Line-Store</h1>
+    </header>
     <div class="container">
-     
 
-        <form class="login-form" id="loginForm">
-          <h1>Login</h1>
-          <div class="form-control">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-          </div>
-          <div class="form-control">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-          </div>
-          <div class="form-control">
-            <button type="submit">Login</button>
-          </div>
-        </form>
-    </div>
-    <footer>
-      &copy; 2025 E-Shop. All rights reserved.
-    </footer>
-
-  <script src="./js/signIn.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
-</body>
-
+      <div class="register-container">
+          <h1>Register</h1>
+          <form id="register-form" action="/submit" method="post">
+              <label for="username">name:</label>
+              <input type="text" id="username" name="username" required>
   
+              <label for="email">email:</label>
+              <input type="email" id="email" name="email" required>
+  
+              <label for="password">password:</label>
+              <input type="password" id="password" name="password" required>
+  
+              <label for="confirm-password">confirm pasword:</label>
+              <input type="password" id="confirm-password" name="confirm-password" required>
+  
+              <button type="submit">Submit</button>
+          </form>
+      </div>
+    </div>
+      <footer>
+        &copy; 2025 E-Shop. All rights reserved.
+      </footer>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                event.preventDefault();
+                alert("worng content!!!");
+            }
+        });
+    </script>
+</body>
 </html>
