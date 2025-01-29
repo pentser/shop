@@ -34,9 +34,11 @@ header span {
      position: absolute;
      top:20px;
      left:20px;
-     background-color:red;
+     background: #007BFF;
+     color: white;
      font-weight: bold;
      padding: 3px;
+     text-align: center;
      
 
 }
@@ -93,3 +95,9 @@ footer {
        padding: 10px; 
        margin-top: 20px;
      }
+
+.cart:hover {
+     cursor: pointer;
+     color:007BFF
+    
+}

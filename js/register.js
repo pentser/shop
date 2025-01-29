@@ -10,7 +10,7 @@ document.getElementById('register-form').addEventListener('submit', function(eve
     const $errorMsg= document.querySelector("span");
 
     if(username.length>8 || username.length<4) {
-        $errorMsg.innerText += `* user : between 4-8 letters [${user}]\n`;
+        $errorMsg.innerText += `* user : between 4-8 letters [${username}]\n`;
         $errorMsg.style.display="block";
     }
     

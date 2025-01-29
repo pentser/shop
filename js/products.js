@@ -6,15 +6,8 @@ window.onload= ()=>{
 }
 
  
-//  const products = [
-//     { id: 1, name: "item 1", price: 699, image: "./images/pic1.jpg" },
-//     { id: 2, name: "item 2", price: 199, image: "/images/pic2.jpg" },
-//     { id: 3, name: "item 3", price: 299, image: "/images/pic3.jpg" }
-//   ];
-
   let products_ar=[];
-
-
+  let cart_ar=[]
 
 
  function displayProducts() {
@@ -63,11 +56,27 @@ window.onload= ()=>{
     alert(`Filtering by ${category}`);
   }
 
-  function addToCart(productId) {
-    alert(`Added product ${productId} to cart.`);
+  async function addToCart(productId) {
+    const $cartCounter = document.querySelector('.counter');
+    currentCount =parseInt($cartCounter.innerText);
+    newCount = currentCount + 1;
+    $cartCounter.innerText= newCount;
+    cart_ar.push(productId);
+    
+    
   }
+  
  function viewCart() {
-    alert('Viewing cart.');
+    const result=cart_ar.map(elm=>{return {id:elm}})
+    console.log(result)
+    // axios.post('http://localhost:3000/api/carts/', result)
+    // .then(function (response) {
+    //   console.log(response);
+    //   window.location.href="../products.html";
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
   }
 
 
