@@ -24,7 +24,7 @@ document.getElementById('register-form').addEventListener('submit', function(eve
     }
     
     if(password!=confirmPassword) {        
-        $errorMsg.innerText += `* confirm : not equal to password [${password},${confirm}]\n`;
+        $errorMsg.innerText += `* confirm : not equal to password [${password},${confirmPasswoed}]\n`;
         $errorMsg.style.display="block";
     }  
 

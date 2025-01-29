@@ -46,7 +46,7 @@ window.onload= ()=>{
         <img src="${product.image}" alt="${product.title}">
         <h3>${product.title}</h3>
         <p>${product.price}</p>
-        <button onclick="addToCart(${product.id})">Add to Cart</button>
+        <button onclick="addToCart(${product})">Add to Cart</button>
       `;
       productsContainer.appendChild(productDiv);
     });
