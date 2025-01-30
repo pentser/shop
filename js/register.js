@@ -44,7 +44,7 @@ document.getElementById('register-form').addEventListener('submit', function(eve
     axios.post('http://localhost:3000/api/auth/register', formData)
     .then(function (response) {
       console.log(response);
-      window.location.href="../products.html";
+      window.location.href="../login.html";
     })
     .catch(function (error) {
       console.log(error);

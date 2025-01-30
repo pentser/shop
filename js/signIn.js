@@ -11,7 +11,8 @@
       password
     })
     .then(function (response) {
-      console.log(response);
+      console.log(response); 
+      localStorage.setItem("userdata", JSON.stringify(response.data));
       window.location.href="../products.html";
     })
     .catch(function (error) {

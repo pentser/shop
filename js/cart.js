@@ -4,3 +4,5 @@ function addToCart(productId) {
  function viewCart() {
     alert('Viewing cart.');
   }
+
+  viewCart();

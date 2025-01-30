@@ -3,11 +3,13 @@ window.onload= ()=>{
   getAllProduct();
   document.getElementById('signinButton').style.display = 'none';
   document.getElementById('signoutButton').style.display = 'inline-block';
+  const retrievedData = JSON.parse(localStorage.getItem("userdata"));
 }
 
  
   let products_ar=[];
   let cart_ar=[]
+
 
 
  function displayProducts() {
@@ -67,16 +69,21 @@ window.onload= ()=>{
   }
   
  function viewCart() {
-    const result=cart_ar.map(elm=>{return {id:elm}})
-    console.log(result)
-    // axios.post('http://localhost:3000/api/carts/', result)
-    // .then(function (response) {
-    //   console.log(response);
-    //   window.location.href="../products.html";
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
+    const prods=cart_ar.map(elm=>{return {id:elm}})
+    const userdata= JSON.parse(localStorage.getItem("userdata")); 
+    console.log(prods)
+    axios.post('http://localhost:3000/api/carts/', prods, {
+      headers: {
+        'token': "Bearer " + userdata.accessToken
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+      window.location.href="../cart.html";
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
 
