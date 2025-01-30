@@ -69,10 +69,10 @@ window.onload= ()=>{
   }
   
  function viewCart() {
-    const prods=cart_ar.map(elm=>{return {id:elm}})
-    const userdata= JSON.parse(localStorage.getItem("userdata")); 
-    console.log(prods)
-    axios.post('http://localhost:3000/api/carts/', prods, {
+  
+  const userdata= JSON.parse(localStorage.getItem("userdata")); 
+  const result = buildUserProducts(userdata.id, cart_ar);
+    axios.post('http://localhost:3000/api/carts/', result, {
       headers: {
         'token': "Bearer " + userdata.accessToken
       }
@@ -101,10 +101,40 @@ window.onload= ()=>{
      console.log(err);
   }
 
-
-
-
   }
+
+// function hendler :
+/* Example usage:
+const userId = "user123";
+const arr = [3, 1, 2, 3, 1, 1];
+const result = buildUserProducts(userId, arr);
+
+console.log(result);
+
+Output:
+{
+  userId: "user123",
+  products: [ { "1": 3 }, { "2": 1 }, { "3": 2 } ]
+}
+*/
+function buildUserProducts(userId, arr) {
+  // Create a map of item -> frequency
+  const frequencyMap = arr.reduce((acc, item) => {
+    acc[item] = (acc[item] || 0) + 1;
+    return acc;
+  }, {});
+
+  // Convert the frequency map to the desired array of objects
+  const productsArray = Object.keys(frequencyMap)
+    .sort((a, b) => Number(a) - Number(b)) // optional sort step by numeric value
+    .map(key => ({ [key]: frequencyMap[key] }));
+
+  // Return the final object
+  return {
+    userId: userId,
+    products: productsArray
+  };
+}
 
 
 
