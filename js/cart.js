@@ -9,7 +9,9 @@
   const result= JSON.parse(localStorage.getItem("result")); 
   console.log(result);
   renderCart(result.products);
-  //  fetchCart(userdata._id);
+  getQuantity(result.products);
+  fetchProductsAndCulculateTotalAmount();  
+
   
   });
 
@@ -45,19 +47,38 @@
      });
    }
 
-   // Function to fetch cart data from the server
-   async function fetchCart(userId) {
+  
+   async function fetchProductsAndCulculateTotalAmount() {
      try {
-       const response = await fetch(`http://localhost:3000/api/carts/find/${userId}`);
+       const response = await fetch(`http://localhost:3000/api/products`);
        if (!response.ok) {
          throw new Error(`Server error: ${response.status}`);
        }
-       const cartData = await response.json();
-       renderCart(cartData);
+       const productData = await response.json();
+      console.log(productData);
+        const result= JSON.parse(localStorage.getItem("result")); 
+        let totalAmount = 0;
+        result.products.forEach((item) => {
+          const product = productData.find((p) => p.id == item.productId);
+         totalAmount += product.price * item.quantity;
+        
+        });
+        document.querySelector('#totalAmount').textContent = totalAmount;
+       
      } catch (error) {
-       console.error('Error fetching cart:', error);
-       alert('Could not load cart data.');
+       console.error('Error fetching products:', error);
+       alert('Could not load product data.');
      }
+   }
+
+   function getQuantity(products) {
+      let total = 0;
+      products.forEach((item) => {
+        total += item.quantity;
+      });
+      document.querySelector('#totalQuantity').textContent = total;
+
+
    }
 
   

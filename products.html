@@ -33,14 +33,18 @@
 <div class="container">
   <div style="display: flex; gap: 20px;">
     <aside class="categories" style="flex: 1;">
-      <h2>Categories</h2>
+      <h2>Search(Filter)</h2>
       <ul>
-        <li><button onclick="filterCategory('Electronics')">Electronics</button></li>
-        <li><button onclick="filterCategory('Fashion')">Fashion</button></li>
-        <li><button onclick="filterCategory('Home & Garden')">Home & Garden</button></li>
-        <li><button onclick="filterCategory('Toys')">Toys</button></li>
-        <li><button onclick="filterCategory('Beauty')">Beauty</button></li>
+        <li>By Title:&nbsp;&nbsp; <input oninput="filterBy('Title')"></li>
+        <li>By Price: <input oninput="filterBy('Price')"></li>    
       </ul>
+
+      <h2>Search (By)</h2>
+      <select  onchange="sortBy(value)"  name="sort" id="sort">
+        <option value="title">Title</option>
+        <option value="price">Price</option>
+      </select>
+
     </aside>
 
     <section class="products" style="flex: 3;" id="products">
@@ -55,11 +59,6 @@
 
 
 <script src="./js/products.js"></script>
-<!-- <script src="./js/category.js"></script>
-<script src="./js/products.js"></script>
-<script src="./js/signIn.js"></script>
-<script src="./js/signOut.js"></script>
-<script src="./js/cart.js"></script>-->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
 </body>
 </html>

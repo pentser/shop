@@ -95,9 +95,15 @@ footer {
        padding: 10px; 
        margin-top: 20px;
      }
+       
 
 .cart:hover {
-     cursor: pointer;
-     color:007BFF
-    
+     cursor: pointer;  
+}
+
+
+
+select{
+     width: 150px;
+     padding: 2px; 
 }

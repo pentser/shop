@@ -35,6 +35,10 @@ table {
     padding: 0.5rem;
   }
 
+  tfoot {
+    color:blue
+  }
+
   
 footer {
     background: #333;

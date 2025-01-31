@@ -53,9 +53,16 @@ window.onload= ()=>{
     window.location.href="../index.html";
   }
 
-  function filterCategory(category) {
-    alert(`Filtering by ${category}`);
+  function filterBy(filterType) {
+    alert(`search by ${filterType}`);
   }
+
+  function sortBy(sortType) {
+    alert(`sort by ${sortType}`);
+  } 
+
+
+
 
   async function addToCart(productId) {
     const $cartCounter = document.querySelector('.counter');
