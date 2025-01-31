@@ -54,12 +54,39 @@ window.onload= ()=>{
   }
 
   function filterBy(filterType) {
-    alert(`search by ${filterType}`);
+    const filterValue = document.getElementById(filterType).value;
+    if(filterType === 'title') {
+       filteredProducts = products_ar.filter(product => product[filterType].toLowerCase().includes(filterValue.toLowerCase()));
+    }
+    else {
+      filteredProducts = products_ar.filter(product => parseFloat(product[filterType]) >= parseFloat(filterValue));
+    }
+
+    const productsContainer = document.getElementById('products');
+    productsContainer.innerHTML = '';
+
+    filteredProducts.forEach(product => {
+      const productDiv = document.createElement('div');
+      productDiv.className = 'product';
+      productDiv.innerHTML = `
+        <img src="${product.image}" alt="${product.title}">
+        <h3>${product.title}</h3>
+        <p>${product.price}</p>
+        <button onclick="addToCart(${product.id})">Add to Cart</button>
+      `;
+      productsContainer.appendChild(productDiv);
+    }); 
   }
 
   function sortBy(sortType) {
-    alert(`sort by ${sortType}`);
-  } 
+    if(sortType === 'title') {
+    products_ar.sort((a, b) => a[sortType].localeCompare(b[sortType]));
+  }
+    else{
+      products_ar.sort((a, b) => a[sortType] - b[sortType]);  
+    } 
+    displayProducts();  
+  }
 
 
 
@@ -70,7 +97,7 @@ window.onload= ()=>{
     newCount = currentCount + 1;
     $cartCounter.innerText= newCount;
     cart_ar.push(productId);
-    
+ 
     
   }
   
