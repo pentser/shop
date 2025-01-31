@@ -3,7 +3,6 @@ window.onload= ()=>{
   getAllProduct();
   document.getElementById('signinButton').style.display = 'none';
   document.getElementById('signoutButton').style.display = 'inline-block';
-  const retrievedData = JSON.parse(localStorage.getItem("userdata"));
 }
 
  
@@ -71,7 +70,8 @@ window.onload= ()=>{
  function viewCart() {
   
   const userdata= JSON.parse(localStorage.getItem("userdata")); 
-  const result = buildUserProducts(userdata.id, cart_ar);
+  const result = buildUserProducts(userdata._id, cart_ar);
+  localStorage.setItem("result", JSON.stringify(result));
     axios.post('http://localhost:3000/api/carts/', result, {
       headers: {
         'token': "Bearer " + userdata.accessToken
@@ -79,6 +79,7 @@ window.onload= ()=>{
     })
     .then(function (response) {
       console.log(response);
+
       window.location.href="../cart.html";
     })
     .catch(function (error) {
@@ -114,27 +115,35 @@ console.log(result);
 Output:
 {
   userId: "user123",
-  products: [ { "1": 3 }, { "2": 1 }, { "3": 2 } ]
+  products: [ { "productId": "1" ,quantity:3}, { "productId:"2", quantity:1 }, { "productIs:"3" quantity: 2 } ]
 }
 */
 function buildUserProducts(userId, arr) {
-  // Create a map of item -> frequency
-  const frequencyMap = arr.reduce((acc, item) => {
-    acc[item] = (acc[item] || 0) + 1;
-    return acc;
-  }, {});
+  // Use an object to keep track of counts for each product ID
+  const productCount = {};
 
-  // Convert the frequency map to the desired array of objects
-  const productsArray = Object.keys(frequencyMap)
-    .sort((a, b) => Number(a) - Number(b)) // optional sort step by numeric value
-    .map(key => ({ [key]: frequencyMap[key] }));
+  for (const productId of arr) {
+    // If we haven't seen this productId yet, initialize it to 0
+    // then increment by 1
+    if (!productCount[productId]) {
+      productCount[productId] = 0;
+    }
+    productCount[productId]++;
+  }
 
-  // Return the final object
+  // Convert the productCount object into the desired array of { productId, quantity } objects
+  const products = Object.keys(productCount).map(id => ({
+    productId: id,
+    quantity: productCount[id]
+  }));
+
+  // Return the final object containing userId and products
   return {
-    userId: userId,
-    products: productsArray
+    userId,
+    products
   };
 }
+
 
 
 

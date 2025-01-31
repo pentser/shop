@@ -1,0 +1,46 @@
+body {
+    font-family: Arial,sans-serif;
+     margin: 0;
+    background-color: #f3f3f3;
+ }
+
+
+header {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px; display: flex; justify-content: space-between; 
+    align-items: center;
+   }
+
+
+table {
+    border-collapse: collapse;
+    width: 60%;
+    margin-top: 1rem;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  th {
+    background-color: #f0f0f0;
+  }
+  #loadCartBtn {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  #userIdInput {
+    width: 200px;
+    padding: 0.5rem;
+  }
+
+  
+footer {
+    background: #333;
+    color: white; 
+    text-align: center;
+    padding: 10px; 
+    margin-top: 20px;
+   }
+
