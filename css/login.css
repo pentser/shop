@@ -66,6 +66,10 @@ header {
 }
 
 
+span#errors{
+color:red;
+font-size: 16px;
+}
 
 footer {
   background: #333;
@@ -74,3 +78,4 @@ footer {
   padding: 10px; 
   margin-top: 20px;
  }
+

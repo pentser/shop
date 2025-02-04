@@ -2,6 +2,8 @@
   document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
+    const spanError= document.getElementById('errors');
+
     // Collect form data
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -16,7 +18,7 @@
       window.location.href="../products.html";
     })
     .catch(function (error) {
-      console.log(error);
+      spanError.innerHTML = "Invalid username or password"
     });
   });
 
